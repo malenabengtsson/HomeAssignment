@@ -497,25 +497,30 @@ public class Program {
                 answer = answer.toLowerCase();
                 switch (answer) {
                     case "yes":
-                        if (!books.isEmpty() && !movies.isEmpty()) {
+                        if (FileUtils.loadObjects("availableBooks.ser") == null &&
+                                FileUtils.loadObjects("availableMovies.ser") == null &&
+                                !canYouWriteInMovies &&
+                                !canYouWriteInBooks) {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             System.out.println("Books and movies are saved.\n" +
                                     "We hope to see you again!");
                             endProgram = true;
-                        }
-                        else if (!canYouWriteInBooks && !canYouWriteInMovies) {
+                        } else if (FileUtils.loadObjects("availableBooks.ser") != null &&
+                                FileUtils.loadObjects("availableMovies.ser") != null &&
+                                !canYouWriteInBooks &&
+                                !canYouWriteInMovies) {
                             System.out.println("Unable to save books and movies since the save file is read only");
-                        } else if (!canYouWriteInBooks) {
+                        } else if (FileUtils.loadObjects("availableBooks.ser") != null && !canYouWriteInBooks) {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             System.out.println("Unable to save books since the savefile is read only.\n" +
                                     "Movies have been added.");
-                        } else if (!canYouWriteInMovies) {
+                        } else if (FileUtils.loadObjects("availableMovies.ser") != null && !canYouWriteInMovies) {
                             FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             System.out.println("Unable to save movies since the savefile is read only.\n" +
                                     "Books have been added.");
                         } else
-
+                            System.out.println("Test");
                         endProgram = true;
                         break;
                     case "no":
@@ -576,6 +581,12 @@ public class Program {
             endProgram = true;
         } else {
             System.out.println("test");
+        }
+    }
+
+    public void check() {
+        if (FileUtils.loadObjects("availableBooks.ser") == null) {
+
         }
     }
 }

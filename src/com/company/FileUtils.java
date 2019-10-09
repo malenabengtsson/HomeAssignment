@@ -27,8 +27,12 @@ public class FileUtils {
     public static boolean checkFileExist(String fileName) {
         return (Files.exists(Paths.get(fileName)));
     }
-    public static boolean checkReadOnly (String fileName){
+
+    public static boolean checkReadOnly(String fileName) {
         File file = new File(fileName);
-        return file.canWrite();
+        if (checkFileExist(fileName)) {
+            return file.canWrite();
+        }
+        return true;
     }
 }
