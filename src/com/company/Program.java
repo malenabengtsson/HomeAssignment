@@ -523,11 +523,13 @@ public class Program {
                             endProgram = true;
                         } else if (!canYouWriteInBooks) {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
+                            FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             System.out.println("Unable to save books since the savefile is read only.\n" +
                                     "Movies have been added.");
                             endProgram = true;
                         } else if (!canYouWriteInMovies) {
                             FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
+                            FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             System.out.println("Unable to save movies since the savefile is read only.\n" +
                                     "Books have been added.");
                             endProgram = true;
@@ -551,6 +553,7 @@ public class Program {
                             endProgram = true;
                         } else {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
+                            FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             System.out.println("Movies are saved.\n" +
                                     "We hope to see you again!");
                             endProgram = true;
@@ -575,6 +578,7 @@ public class Program {
                             System.out.println("Unable to save books since the save file is read only.");
                         } else {
                             FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
+                            FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             System.out.println("Books are saved.\n" +
                                     "We hope to see you again!");
                             endProgram = true;
