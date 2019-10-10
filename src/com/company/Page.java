@@ -19,7 +19,7 @@ public class Page implements Serializable {
     }
 
     public void addWordsToPage() {
-        System.out.println(words.get(random.nextInt(words.size()-1)));
+        System.out.print(words.get(random.nextInt(words.size()-1)));
     }
 
     @Override
