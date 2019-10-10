@@ -85,8 +85,8 @@ public class Program {
             }
             while (!answer.equals("yes") && !answer.equals("no"));
         } else if (foundBooks && FileUtils.loadObjects("availableBooks.ser") != null) {
+            System.out.println("Would you like to see the books that are currently available?");
             do {
-                System.out.println("Would you like to see the books that are currently available?");
                 try {
                     answer = scanner.nextLine();
                     answer = answer.toLowerCase();
@@ -102,26 +102,35 @@ public class Program {
                         this.books = new ArrayList<>();
                         this.movies = new ArrayList<>();
                         break;
+                    default:
+                        System.out.println("Only write yes or no.");
+                        break;
                 }
             } while (!answer.equals("yes") && !answer.equals("no"));
         } else if (foundMovies && FileUtils.loadObjects("availableMovies.ser") != null) {
             System.out.println("Would you like to see the movies that are currently available?");
-            try {
-                answer = scanner.nextLine();
-                answer = answer.toLowerCase();
-            } catch (Exception e) {
-                System.out.println("Answer yes or no, please.");
+            do {
+                try {
+                    answer = scanner.nextLine();
+                    answer = answer.toLowerCase();
+                } catch (Exception e) {
+                    System.out.println("Answer yes or no, please.");
+                }
+                switch (answer) {
+                    case "yes":
+                        this.movies = (ArrayList<Movie>) FileUtils.loadObjects("availableMovies.ser");
+                        this.books = new ArrayList<>();
+                        break;
+                    case "no":
+                        this.books = new ArrayList<>();
+                        this.movies = new ArrayList<>();
+                        break;
+                    default:
+                        System.out.println("Only write yes or no.");
+                        break;
+                }
             }
-            switch (answer) {
-                case "yes":
-                    this.movies = (ArrayList<Movie>) FileUtils.loadObjects("availableMovies.ser");
-                    this.books = new ArrayList<>();
-                    break;
-                case "no":
-                    this.books = new ArrayList<>();
-                    this.movies = new ArrayList<>();
-                    break;
-            }
+            while (!answer.equals("yes") && !answer.equals("no"));
         } else if (!(foundBooks &&
                 foundMovies &&
                 FileUtils.loadObjects("availableBooks.ser") != null &&
@@ -198,6 +207,12 @@ public class Program {
     }
 
     public void showBooks() {
+        for (Book book : books) {
+            System.out.println(book.getTitle());
+            for (Page page : book.getPages()) {
+                page.addWordsToPage();
+            }
+        }
         if (books.isEmpty()) {
             System.out.println("No books added yet\n" +
                     "----------------------------------");
