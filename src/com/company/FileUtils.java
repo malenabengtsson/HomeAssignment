@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FileUtils {
     public static void saveObjects(Object o, String fileName, StandardOpenOption... option) {
@@ -25,6 +26,17 @@ public class FileUtils {
         return null;
     }
 
+
+    public static List<String> readAllLines(String fileName) {
+
+        List<String> listOfStrings = null;
+        try {
+            listOfStrings = Files.readAllLines(Paths.get(fileName));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listOfStrings;
+    }
     public static boolean checkFileExist(String fileName) {
         return (Files.exists(Paths.get(fileName)));
     }
