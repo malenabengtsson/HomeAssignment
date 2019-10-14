@@ -486,30 +486,29 @@ public class Program {
                     case "yes":
                         if (!canYouWriteInMovies && !canYouWriteInBooks) {
                             System.out.println("Unable to save books and movies since the save file is read only");
-                            endProgram = true;
+                            break;
                         } else if (canYouWriteInBooks && canYouWriteInMovies) {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.CREATE);
                             FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.CREATE);
                             System.out.println("Books and movies are saved.\n" +
                                     "We hope to see you again!");
-                            endProgram = true;
+                            break;
                         } else if (!canYouWriteInBooks) {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.CREATE);
                             FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.CREATE);
                             System.out.println("Unable to save books since the savefile is read only.\n" +
                                     "Movies have been added.");
-                            endProgram = true;
+                            break;
                         } else if (!canYouWriteInMovies) {
                             FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.CREATE);
                             System.out.println("Unable to save movies since the savefile is read only.\n" +
                                     "Books have been added.");
-                            endProgram = true;
+                            break;
                         }
                         break;
                     case "no":
                         System.out.println("We hope to see you again!");
-                        endProgram = true;
                         break;
                 }
             } while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
@@ -523,13 +522,14 @@ public class Program {
                         if (!canYouWriteInMovies) {
                             System.out.println("Unable to save movies since the save file is read only.");
                             FileUtils.deleteSaveFile("availableBooks.ser");
+                            break;
                         } else {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.CREATE);
                             FileUtils.deleteSaveFile("availableBooks.ser");
                             System.out.println("Movies are saved.\n" +
                                     "We hope to see you again!");
+                            break;
                         }
-                        break;
                     case "no":
                         System.out.println("We hope to see you again!");
                         break;
@@ -551,6 +551,7 @@ public class Program {
                             FileUtils.deleteSaveFile("availableMovies.ser");
                             System.out.println("Books are saved.\n" +
                                     "We hope to see you again!");
+                            break;
                         }
                         break;
                     case "no":
