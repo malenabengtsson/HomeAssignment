@@ -552,7 +552,7 @@ public class Program {
                             endProgram = true;
                         } else {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.CREATE);
-                            FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.CREATE);
+                            FileUtils.deleteSaveFile("availableBooks.ser");
                             System.out.println("Movies are saved.\n" +
                                     "We hope to see you again!");
                             endProgram = true;
@@ -577,7 +577,7 @@ public class Program {
                             System.out.println("Unable to save books since the save file is read only.");
                         } else {
                             FileUtils.saveObjects(books, "availableBooks.ser", StandardOpenOption.CREATE);
-                            FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.CREATE);
+                            FileUtils.deleteSaveFile("availableMovies.ser");
                             System.out.println("Books are saved.\n" +
                                     "We hope to see you again!");
                             endProgram = true;

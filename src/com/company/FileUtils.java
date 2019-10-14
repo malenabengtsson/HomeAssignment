@@ -48,4 +48,8 @@ public class FileUtils {
         }
         return true;
     }
+    public static void deleteSaveFile (String fileName){
+        File file = new File(fileName);
+        file.delete();
+    }
 }
