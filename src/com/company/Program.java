@@ -27,38 +27,28 @@ public class Program {
     }
 
     public void mainMenu() {
-        while (!endProgram) {
+        Menu.MainMenu menu;
+        do {
             System.out.println("\tWelcome to the library!\n\n" +
-                    "What would you like to browse today?\n" +
-                    "1. Books.\n" +
-                    "2. Movies.\n" +
-                    "3. Show all books and movies.\n" +
-                    "4. Exit the library\n" +
-                    "----------------------------------");
-            try {
-                choice = Integer.parseInt(scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("Please choose a number between 1-4.\n");
-            }
-            switch (choice) {
-                case 1:
+                    "What would you like to browse today?\n");
+            menu = Menu.showMenuAndGetChoice(Menu.MainMenu.values());
+            switch (menu) {
+                case BOOKS:
                     bookMenu();
                     break;
-                case 2:
+                case MOVIES:
                     movieMenu();
                     break;
-                case 3:
+                case SHOW_ALL_BOOKS_AND_MOVIES:
                     showAllBooksAndMovies();
                     break;
-                case 4:
+                case EXIT:
                     exitLibrary();
                     break;
                 default:
                     System.out.println("Choose a number between 1-4, please.");
-                    break;
-
             }
-        }
+        } while (menu != Menu.MainMenu.EXIT);
     }
 
     public void checkForSaveFile() {
@@ -143,34 +133,26 @@ public class Program {
     }
 
     public void bookMenu() {
-
+        Menu.BookMenu menu;
         do {
-            System.out.println("What would you like to do?\n" +
-                    "1. Add book\n" +
-                    "2. Show books\n" +
-                    "3. Rent book\n" +
-                    "4. Show average amount of pages of the books in the library\n" +
-                    "5. Back to main menu\n" +
-                    "----------------------------------");
-            try {
-                bookChoice = Integer.parseInt(scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("Please choose a number between 1-5.");
-            }
-            switch (bookChoice) {
-                case 1:
+            System.out.println("What would you like to do?\n");
+            menu = Menu.showMenuAndGetChoice(Menu.BookMenu.values());
+            switch (menu) {
+                case ADD_BOOK:
+                    System.out.println("Option 1");
                     addBook();
                     break;
-                case 2:
+                case SHOW_BOOKS:
+                    System.out.println("Option 2");
                     showBooks();
                     break;
-                case 3:
+                case RENT_BOOK:
                     rentBook();
                     break;
-                case 4:
+                case SHOW_AVERAGE_AMOUNT_OF_PAGES:
                     averagePages();
                     break;
-                case 5:
+                case BACK_TO_MAIN_MENU:
                     backToMainMenu();
                     break;
                 default:
@@ -178,7 +160,7 @@ public class Program {
                     break;
             }
         }
-        while (bookChoice != 5);
+        while (menu != Menu.BookMenu.BACK_TO_MAIN_MENU);
     }
 
     public void addBook() {
@@ -274,42 +256,34 @@ public class Program {
 
 
     public void movieMenu() {
+        Menu.MovieMenu menu;
         do {
 
             System.out.println(
-                    "What would you like to do? \n" +
-                            "1. Add movie\n" +
-                            "2. Show movies\n" +
-                            "3. Rent movie\n" +
-                            "4. Show average duration of movies in the library\n" +
-                            "4. Back to main menu\n" +
-                            "----------------------------------");
-            try {
-                movieChoice = Integer.parseInt(scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("Please choose a number between 1-4.");
-            }
-            switch (movieChoice) {
-                case 1:
+                    "What would you like to do?\n");
+            menu = Menu.showMenuAndGetChoice(Menu.MovieMenu.values());
+            switch (menu) {
+                case ADD_MOVIE:
                     addMovie();
                     break;
-                case 2:
+                case SHOW_MOVIES:
                     showMovies();
                     break;
-                case 3:
+                case RENT_MOVIE:
                     rentMovie();
                     break;
-                case 4:
+                case SHOW_AVERAGE_OF_DURATION:
                     averageDuration();
                     break;
-                case 5:
+                case BACK_TO_MAIN_MENU:
                     backToMainMenu();
                     break;
                 default:
+                    System.out.println("Please choose a number between 1-5, please.");
                     break;
             }
 
-        } while (movieChoice != 4);
+        } while (Menu.showMenuAndGetChoice(Menu.MovieMenu.values()) != Menu.MovieMenu.BACK_TO_MAIN_MENU);
     }
 
     public void addMovie() {
@@ -391,30 +365,24 @@ public class Program {
     }
 
     public void showAllBooksAndMovies() {
+        Menu.SortingMenu menu;
+                menu = Menu.showMenuAndGetChoice(Menu.SortingMenu.values());
         do {
             if (books.isEmpty() && movies.isEmpty()) {
                 System.out.println("There are no books or movies available at the library.\n" +
                         "----------------------------------");
                 break;
             } else if (!(books.isEmpty() && movies.isEmpty())) {
-                System.out.println("Please choose a sorting order:\n" +
-                        "1. Books and movies in alphabetical order\n" +
-                        "2. Sorted by highest amount of pages and highest amount of minutes.\n" +
-                        "3. Back to main menu\n" +
-                        "----------------------------------");
-                try {
-                    sortingChoice = Integer.parseInt(scanner.nextLine());
-                } catch (Exception e) {
-                    System.out.println("Please choose a number between 1 - 3 please.");
-                }
-                switch (sortingChoice) {
-                    case 1:
+                System.out.println("Please choose a sorting order:\n");
+                menu = Menu.showMenuAndGetChoice(Menu.SortingMenu.values());
+                switch (menu) {
+                    case SORT_BY_TITLE:
                         sortByTitle();
                         break;
-                    case 2:
+                    case SORT_BY_PAGES_AND_DURATION:
                         sortByPagesAndDuration();
                         break;
-                    case 3:
+                    case BACK_TO_MAIN_MENU:
                         backToMainMenu();
                         break;
                     default:
@@ -422,7 +390,7 @@ public class Program {
                 }
             }
         }
-        while (sortingChoice != 3);
+        while (menu != Menu.SortingMenu.BACK_TO_MAIN_MENU);
     }
 
     public void sortByTitle() {
@@ -499,6 +467,8 @@ public class Program {
     public void backToMainMenu() {
         System.out.println("Going back to main menu\n" +
                 "----------------------------------");
+        mainMenu();
+
     }
 
     public void exitLibrary() {
@@ -506,7 +476,7 @@ public class Program {
             FileUtils.deleteSaveFile("availableBooks.ser");
             FileUtils.deleteSaveFile("availableMovies.ser");
             System.out.println("We hope to see you again!");
-            endProgram = true;
+
         } else if (!books.isEmpty() && !movies.isEmpty()) {
             do {
                 System.out.println("Would you like to save the books and movies in the library for next time?");
@@ -553,18 +523,15 @@ public class Program {
                         if (!canYouWriteInMovies) {
                             System.out.println("Unable to save movies since the save file is read only.");
                             FileUtils.deleteSaveFile("availableBooks.ser");
-                            endProgram = true;
                         } else {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.CREATE);
                             FileUtils.deleteSaveFile("availableBooks.ser");
                             System.out.println("Movies are saved.\n" +
                                     "We hope to see you again!");
-                            endProgram = true;
                         }
                         break;
                     case "no":
                         System.out.println("We hope to see you again!");
-                        endProgram = true;
                         break;
 
                 }
@@ -584,12 +551,10 @@ public class Program {
                             FileUtils.deleteSaveFile("availableMovies.ser");
                             System.out.println("Books are saved.\n" +
                                     "We hope to see you again!");
-                            endProgram = true;
                         }
                         break;
                     case "no":
                         System.out.println("We hope to see you again!");
-                        endProgram = true;
                         break;
 
                 }
