@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.File;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -502,6 +503,8 @@ public class Program {
 
     public void exitLibrary() {
         if (books.isEmpty() && movies.isEmpty()) {
+            FileUtils.deleteSaveFile("availableBooks.ser");
+            FileUtils.deleteSaveFile("availableMovies.ser");
             System.out.println("We hope to see you again!");
             endProgram = true;
         } else if (!books.isEmpty() && !movies.isEmpty()) {
@@ -549,6 +552,7 @@ public class Program {
                     case "yes":
                         if (!canYouWriteInMovies) {
                             System.out.println("Unable to save movies since the save file is read only.");
+                            FileUtils.deleteSaveFile("availableBooks.ser");
                             endProgram = true;
                         } else {
                             FileUtils.saveObjects(movies, "availableMovies.ser", StandardOpenOption.CREATE);
