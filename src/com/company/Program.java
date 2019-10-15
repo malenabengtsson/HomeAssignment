@@ -48,7 +48,7 @@ public class Program {
                 default:
                     System.out.println("Choose a number between 1-4, please.");
             }
-        } while (menu != Menu.MainMenu.EXIT);
+        } while (menu != Menu.MainMenu.EXIT && !endProgram);
     }
 
     public void checkForSaveFile() {
@@ -562,5 +562,6 @@ public class Program {
             } while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
         }
 
+            endProgram = true;
     }
 }

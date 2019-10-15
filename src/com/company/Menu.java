@@ -92,7 +92,6 @@ public class Menu {
 
 
         }
-            System.out.println("Test");
             return menuChoices[choice - 1];
 
     }

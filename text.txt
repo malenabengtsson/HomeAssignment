@@ -1,6 +1,5 @@
 It
 is
-a
 good
 bad
 horrible
@@ -18,3 +17,14 @@ need
 hate
 love
 dislike
+woman
+man
+child
+terrible
+terrific
+funny
+once
+she
+he
+him
+her
