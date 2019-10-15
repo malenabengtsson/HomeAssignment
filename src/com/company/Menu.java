@@ -3,8 +3,6 @@ package com.company;
 import java.util.Scanner;
 
 public class Menu {
-    int choice;
-
     public enum MainMenu implements hasDescription {
         BOOKS("Books"),
         MOVIES("Movies"),
@@ -89,11 +87,8 @@ public class Menu {
             } catch (Exception e) {
                 System.out.println("That is not an acceptable choice.");
             }
-
-
         }
             return menuChoices[choice - 1];
-
     }
 }
 

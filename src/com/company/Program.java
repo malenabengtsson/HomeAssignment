@@ -1,6 +1,5 @@
 package com.company;
 
-import java.io.File;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,12 +10,8 @@ public class Program {
     private ArrayList<Book> books;
     private ArrayList<Movie> movies;
     private boolean endProgram = false;
-    private int bookChoice;
-    private int movieChoice;
     private int result;
-    private int choice;
     private String answer;
-    private int sortingChoice;
     private boolean canYouWriteInBooks = FileUtils.checkReadOnly("availableBooks.ser");
     private boolean canYouWriteInMovies = FileUtils.checkReadOnly("availableMovies.ser");
     private boolean foundBooks = FileUtils.checkFileExist("availableBooks.ser");
@@ -139,11 +134,9 @@ public class Program {
             menu = Menu.showMenuAndGetChoice(Menu.BookMenu.values());
             switch (menu) {
                 case ADD_BOOK:
-                    System.out.println("Option 1");
                     addBook();
                     break;
                 case SHOW_BOOKS:
-                    System.out.println("Option 2");
                     showBooks();
                     break;
                 case RENT_BOOK:
@@ -366,7 +359,7 @@ public class Program {
 
     public void showAllBooksAndMovies() {
         Menu.SortingMenu menu;
-                menu = Menu.showMenuAndGetChoice(Menu.SortingMenu.values());
+        menu = Menu.showMenuAndGetChoice(Menu.SortingMenu.values());
         do {
             if (books.isEmpty() && movies.isEmpty()) {
                 System.out.println("There are no books or movies available at the library.\n" +
@@ -562,6 +555,6 @@ public class Program {
             } while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
         }
 
-            endProgram = true;
+        endProgram = true;
     }
 }
