@@ -13,13 +13,20 @@ public class MenuTest {
 
     @Test
     public void addBook() {
-
         int size = program.getBooks().size();
      //   String input = "Test one\nhk";  --- this will give false since hk cant be parsed to int
         String input = "Test one\n10";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         program.addBook();
         assertEquals(size + 1, program.getBooks().size());
+    }
+    @Test
+    public void addMovie(){
+        int size = program.getMovies().size();
+        String input = "Movie one\n60";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        program.addMovie();
+        assertEquals(size +1, program.getMovies().size());
     }
 
 }
