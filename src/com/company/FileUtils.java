@@ -7,6 +7,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
+/**
+ * Facade. Methods that has to do with save files
+ */
 public class FileUtils {
     public static void saveObjects(Object o, String fileName, StandardOpenOption... option) {
         Path path = Paths.get(fileName);

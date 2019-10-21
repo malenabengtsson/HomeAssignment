@@ -2,7 +2,13 @@ package com.company;
 
 import java.util.Scanner;
 
+/**
+ * Class for all the different enum menus
+ */
 public class Menu {
+    /**
+     * Main menu
+     */
     public enum MainMenu implements hasDescription {
         BOOKS("Books"),
         MOVIES("Movies"),
@@ -20,6 +26,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Book menu
+     */
     public enum BookMenu implements hasDescription {
         ADD_BOOK("Add book"),
         SHOW_BOOKS("Show books"),
@@ -38,6 +47,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Movie menu
+     */
     public enum MovieMenu implements hasDescription {
         ADD_MOVIE("Add movie"),
         SHOW_MOVIES("Show movies"),
@@ -56,6 +68,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Sorting menu
+     */
     public enum SortingMenu implements hasDescription {
         SORT_BY_TITLE("Sort books and movies by title"),
         SORT_BY_PAGES_AND_DURATION("Sort books and movies by pages and duration"),

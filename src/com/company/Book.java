@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 /**
- * <i>Class to create books</i>
+ * Class to create books
  */
 public class Book extends LibraryItems {
     private String title;

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Seperate class for page
+ */
 public class Page implements Serializable {
     private int amountOfPages;
     private Random random = new Random();

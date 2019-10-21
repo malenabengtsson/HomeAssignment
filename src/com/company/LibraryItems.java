@@ -2,6 +2,9 @@ package com.company;
 
 import java.io.Serializable;
 
+/**
+ * Superclass
+ */
 public abstract class LibraryItems implements Serializable {
     private String title;
 
