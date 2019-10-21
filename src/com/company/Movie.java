@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Class for creating movies
  */
-public class Movie extends LibraryItems  {
+public class Movie extends LibraryItem {
     private String title;
     private ArrayList<MovieDuration> movieDuration;
 

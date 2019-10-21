@@ -5,11 +5,11 @@ import java.io.Serializable;
 /**
  * Superclass
  */
-public abstract class LibraryItems implements Serializable {
+public abstract class LibraryItem implements Serializable {
     private String title;
 
 
-    LibraryItems(String title) {
+    LibraryItem(String title) {
         this.title = title;
 
     }

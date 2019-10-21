@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Class to create books
  */
-public class Book extends LibraryItems {
+public class Book extends LibraryItem {
     private String title;
     private ArrayList<Page> pages;
 
