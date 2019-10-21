@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.ArrayList;
 
+/**
+ * <i>Class to create books</i>
+ */
 public class Book extends LibraryItems {
     private String title;
     private ArrayList<Page> pages;
