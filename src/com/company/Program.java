@@ -46,8 +46,6 @@ public class Program {
                 case EXIT:
                     exitLibrary();
                     break;
-                default:
-                    System.out.println("Choose a number between 1-4, please.");
             }
         } while (menu != Menu.MainMenu.EXIT && !endProgram);
     }
@@ -154,9 +152,6 @@ public class Program {
                 case BACK_TO_MAIN_MENU:
                     backToMainMenu();
                     break;
-                default:
-                    System.out.println("Please choose a number between 1-5.");
-                    break;
             }
         }
         while (menu != Menu.BookMenu.BACK_TO_MAIN_MENU);
@@ -167,28 +162,23 @@ public class Program {
         if (!canYouWriteInBooks && FileUtils.loadObjects("availableBooks.ser") != null) {
             System.out.println("The filesave for books are read only and you cant add a new book.\n");
         } else {
-            boolean repeat = true;
-            while (repeat) {
-                System.out.println("Please write the title of the book and the amount of pages it contains in whole numbers.");
-                try {
-                    String title = scanner.nextLine();
-                    int pages = Integer.parseInt(scanner.nextLine());
-                    Book book = new Book(title, pages);
-                    book.addPages(pages);
-                    books.add(book);
-                    book.thankYouMessage();
-                    repeat = false;
-                    break;
-                } catch (Exception e) {
-                    System.out.println(
-                            "Book could not be added.\n" +
-                                    "Only write numbers when asked for amount of pages.\n");
-                    break;
+            System.out.println("Please write the title of the book and the amount of pages it contains in whole numbers.");
+            try {
+                String title = scanner.nextLine();
+                int pages = Integer.parseInt(scanner.nextLine());
+                Book book = new Book(title, pages);
+                book.addPages(pages);
+                books.add(book);
+                book.thankYouMessage();
+            } catch (Exception e) {
+                System.out.println(
+                        "Book could not be added.\n" +
+                                "Only write numbers when asked for amount of pages.\n");
 
-                }
             }
         }
     }
+
 
     public void showBooks() {
         if (books.isEmpty()) {
@@ -205,10 +195,13 @@ public class Program {
                 System.out.println();
             }
         }
+        System.out.println();
     }
 
     public void rentBook() {
-        if (!canYouWriteInBooks && FileUtils.loadObjects("availableBooks.ser") != null) {
+        if (books.isEmpty()) {
+            System.out.println("Sorry, there are no books available at the library");
+        } else if (!canYouWriteInBooks && FileUtils.loadObjects("availableBooks.ser") != null) {
             System.out.println("The filesave for books are read only and you cant remove a book");
         } else {
             System.out.println("Enter the title of the book you would like to rent.");
@@ -259,7 +252,6 @@ public class Program {
     public void movieMenu() {
         Menu.MovieMenu menu;
         do {
-
             System.out.println(
                     "What would you like to do?\n");
             menu = Menu.showMenuAndGetChoice(Menu.MovieMenu.values());
@@ -278,9 +270,6 @@ public class Program {
                     break;
                 case BACK_TO_MAIN_MENU:
                     backToMainMenu();
-                    break;
-                default:
-                    System.out.println("Please choose a number between 1-5, please.");
                     break;
             }
 
@@ -325,7 +314,10 @@ public class Program {
     }
 
     public void rentMovie() {
-        if (!canYouWriteInMovies && FileUtils.loadObjects("availableMovies.ser") != null) {
+        if (movies.isEmpty()) {
+            System.out.println("Sorry, there are no movies available at the library\n" +
+                    "----------------------------------\n");
+        } else if (!canYouWriteInMovies && FileUtils.loadObjects("availableMovies.ser") != null) {
             System.out.println("The filesave for movies are read only and you cant rent a movie.");
         } else {
             System.out.println("Enter the title of the movie you would like to rent.");
@@ -384,8 +376,6 @@ public class Program {
                         break;
                     case BACK_TO_MAIN_MENU:
                         backToMainMenu();
-                        break;
-                    default:
                         break;
                 }
             }
@@ -465,7 +455,7 @@ public class Program {
     }
 
     private void backToMainMenu() {
-        System.out.println("Going back to main menu\n" +
+        System.out.println("Going back to main menu.\n" +
                 "----------------------------------");
         mainMenu();
 
@@ -563,7 +553,13 @@ public class Program {
                         }
                         break;
                     case "no":
-                        System.out.println("We hope to see you again!");
+                        if (!canYouWriteInBooks) {
+                            System.out.println("Unable to delete the books in the library since the save file is read only.");
+                        } else {
+                            FileUtils.deleteSaveFile("availableBooks.ser");
+                            System.out.println("We hope to see you again!");
+
+                        }
                         break;
 
                 }

@@ -98,12 +98,15 @@ public class Menu {
             Scanner scanner = new Scanner(System.in);
             try {
                 choice = Integer.parseInt(scanner.nextLine());
-                System.out.println(choice);
+                if (choice > menuChoices.length) {
+                    System.out.println("That is not an acceptable choice.\n");
+                }
             } catch (Exception e) {
-                System.out.println("That is not an acceptable choice.");
+                System.out.println("That is not an acceptable choice.\n");
             }
         }
-            return menuChoices[choice - 1];
+        return menuChoices[choice - 1];
     }
 }
+
 
