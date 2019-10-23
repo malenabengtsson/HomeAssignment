@@ -182,10 +182,12 @@ public class Program {
                 book.addPages(pages);
                 books.add(book);
                 book.thankYouMessage();
+                separationLine();
             } catch (Exception e) {
                 System.out.println(
-                                "Book could not be added.\n" +
-                                "Only write numbers when asked for amount of pages.\n");
+                        "Book could not be added.\n" +
+                                "Only write numbers when asked for amount of pages.");
+                separationLine();
 
             }
         }
@@ -587,7 +589,8 @@ public class Program {
             e.printStackTrace();
         }
     }
-    public void separationLine(){
+
+    public void separationLine() {
         System.out.println("--------------------------------------------------------------");
     }
 }

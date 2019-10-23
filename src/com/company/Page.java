@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Seperate class for page
  */
-public class Page implements Serializable {
+public class Page implements Serializable{
     private int amountOfPages;
     private Random random = new Random();
     private List<String> words = FileUtils.readAllLines("text.txt");

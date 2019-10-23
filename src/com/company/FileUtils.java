@@ -29,7 +29,6 @@ public class FileUtils {
     }
 
     public static List<String> readAllLines(String fileName) {
-
         List<String> listOfStrings = null;
         try {
             listOfStrings = Files.readAllLines(Paths.get(fileName));

@@ -32,8 +32,7 @@ public class Book extends LibraryItem {
 
 
     public void thankYouMessage() {
-        System.out.println("Thank you for visiting the book aisle, the book has been added.\n" +
-                "----------------------------------");
+        System.out.println("Thank you for visiting the book aisle, the book has been added.");
 
     }
 
