@@ -35,12 +35,21 @@ public class Program {
             menu = Menu.showMenuAndGetChoice(Menu.MainMenu.values());
             switch (menu) {
                 case BOOKS:
+                    System.out.print("You take a right and walks towards the book aisle...\n");
+                    separationLine();
+                    waitingTime();
                     bookMenu();
                     break;
                 case MOVIES:
+                    System.out.print("You take a left and walks towards the movie aisle...\n");
+                    separationLine();
+                    waitingTime();
                     movieMenu();
                     break;
                 case SHOW_ALL_BOOKS_AND_MOVIES:
+                    System.out.print("The librarian opens up the computer to show all titles...\n");
+                    separationLine();
+                    waitingTime();
                     showAllBooksAndMovies();
                     break;
                 case EXIT:
@@ -50,6 +59,9 @@ public class Program {
         } while (menu != Menu.MainMenu.EXIT && !endProgram);
     }
 
+    /**
+     * Method to check if theres a savefile and if user wants to load it
+     */
     public void checkForSaveFile() {
         if (foundBooks &&
                 foundMovies &&
@@ -93,7 +105,7 @@ public class Program {
                         this.movies = new ArrayList<>();
                         break;
                     default:
-                        System.out.println("Only write yes or no.");
+                        System.out.println("Answer yes or no, please.");
                         break;
                 }
             } while (!answer.equals("yes") && !answer.equals("no"));
@@ -116,7 +128,7 @@ public class Program {
                         this.movies = new ArrayList<>();
                         break;
                     default:
-                        System.out.println("Only write yes or no.");
+                        System.out.println("Answer yes or no, please.");
                         break;
                 }
             }
@@ -172,7 +184,7 @@ public class Program {
                 book.thankYouMessage();
             } catch (Exception e) {
                 System.out.println(
-                        "Book could not be added.\n" +
+                                "Book could not be added.\n" +
                                 "Only write numbers when asked for amount of pages.\n");
 
             }
@@ -182,8 +194,8 @@ public class Program {
 
     public void showBooks() {
         if (books.isEmpty()) {
-            System.out.println("No books added yet\n" +
-                    "----------------------------------");
+            System.out.println("No books added yet");
+            separationLine();
         } else {
             System.out.println("The books that are available are:");
             for (Book book : books) {
@@ -212,8 +224,8 @@ public class Program {
             }
             for (int i = 0; i < books.size(); i++) {
                 if (books.get(i).getTitle().equalsIgnoreCase(rentBook)) {
-                    System.out.println("You rented the book and its no longer available at the library.\n" +
-                            "----------------------------------");
+                    System.out.println("You rented the book and its no longer available at the library.");
+                    separationLine();
                     for (int j = 0; j < books.size() - 1; j++) {
                         books.get(i).getPages().remove(j);
                         found = true;
@@ -224,8 +236,8 @@ public class Program {
                 }
             }
             if (!found) {
-                System.out.println("No books with that title is available at the library.\n" +
-                        "----------------------------------");
+                System.out.println("No books with that title is available at the library.");
+                separationLine();
             }
         }
     }
@@ -233,18 +245,18 @@ public class Program {
 
     public void averagePages() {
         if (books.isEmpty()) {
-            System.out.println("No books added yet, average pages cannot be calculated.\n" +
-                    "----------------------------------");
+            System.out.println("No books added yet, average pages cannot be calculated.");
+            separationLine();
         } else if (books.size() < 2) {
-            System.out.println("Please add at least two books in order to calculate the average.\n" +
-                    "----------------------------------");
-
+            System.out.println("Please add at least two books in order to calculate the average.");
+            separationLine();
         } else {
             for (Book book : books)
                 result += book.getPages().size();
             float resultFloat = (float) result;
             float finalResult = (resultFloat / books.size());
-            System.out.printf("The average amount of pages per book is %f\n\n", finalResult);
+            System.out.printf("The average amount of pages per book is %.2f\n\n", finalResult);
+            separationLine();
         }
     }
 
@@ -303,8 +315,8 @@ public class Program {
 
     public void showMovies() {
         if (movies.isEmpty()) {
-            System.out.println("No movies added yet\n" +
-                    "----------------------------------");
+            System.out.println("No movies added yet.");
+            separationLine();
         } else {
             System.out.println("The movies that are available are: \n");
             for (Movie movie : movies) {
@@ -315,8 +327,8 @@ public class Program {
 
     public void rentMovie() {
         if (movies.isEmpty()) {
-            System.out.println("Sorry, there are no movies available at the library\n" +
-                    "----------------------------------\n");
+            System.out.println("Sorry, there are no movies available at the library.");
+            separationLine();
         } else if (!canYouWriteInMovies && FileUtils.loadObjects("availableMovies.ser") != null) {
             System.out.println("The filesave for movies are read only and you cant rent a movie.");
         } else {
@@ -327,43 +339,41 @@ public class Program {
                 if (movies.get(i).getTitle().equalsIgnoreCase(rentMovie)) {
                     found = true;
                     movies.remove(i);
-                    System.out.println("You rented the movie and its no longer available at the library.\n" +
-                            "----------------------------------");
+                    System.out.println("You rented the movie and its no longer available at the library.");
+                    separationLine();
                 } else {
                     found = false;
                 }
             }
             if (!found) {
-                System.out.println("No movies with that title is available at the library.\n" +
-                        "----------------------------------");
+                System.out.println("No movies with that title is available at the library.");
+                separationLine();
             }
         }
     }
 
     public void averageDuration() {
         if (movies.isEmpty()) {
-            System.out.println("No movies added yet, average duration cannot be calculated.\n" +
-                    "----------------------------------");
+            System.out.println("No movies added yet, average duration cannot be calculated.");
+            separationLine();
         } else if (movies.size() < 2) {
-            System.out.println("Please add at least two movies in order to calculate the average duration.\n" +
-                    "----------------------------------");
-
+            System.out.println("Please add at least two movies in order to calculate the average duration.");
+            separationLine();
         } else {
             for (Movie movie : movies)
                 result += movie.getMovieDuration().size();
             float resultFloat = (float) result;
             float finalResult = (resultFloat / movies.size());
-            System.out.printf("The average duration per movie is %f\n\n", finalResult);
+            System.out.printf("The average duration per movie is %.2f\n\n", finalResult);
         }
     }
 
     public void showAllBooksAndMovies() {
         if (books.isEmpty() && movies.isEmpty()) {
-            System.out.println("There are no books or movies available at the library.\n" +
-                    "----------------------------------");
+            System.out.println("There are no books or movies available at the library.");
+            separationLine();
         } else if (!(books.isEmpty() && movies.isEmpty())) {
             Menu.SortingMenu menu;
-            menu = Menu.showMenuAndGetChoice(Menu.SortingMenu.values());
             do {
                 System.out.println("Please choose a sorting order:\n");
                 menu = Menu.showMenuAndGetChoice(Menu.SortingMenu.values());
@@ -455,8 +465,9 @@ public class Program {
     }
 
     private void backToMainMenu() {
-        System.out.println("Going back to main menu.\n" +
-                "----------------------------------");
+        System.out.println("Going back to the front desk...");
+        separationLine();
+        waitingTime();
         mainMenu();
 
     }
@@ -565,7 +576,18 @@ public class Program {
                 }
             } while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
         }
-
+        waitingTime();
         endProgram = true;
+    }
+
+    public void waitingTime() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public void separationLine(){
+        System.out.println("--------------------------------------------------------------");
     }
 }

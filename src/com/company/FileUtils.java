@@ -28,7 +28,6 @@ public class FileUtils {
         return null;
     }
 
-
     public static List<String> readAllLines(String fileName) {
 
         List<String> listOfStrings = null;
