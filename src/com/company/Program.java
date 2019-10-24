@@ -522,7 +522,7 @@ public class Program {
                         System.out.println("We hope to see you again!");
                         break;
                 }
-            } while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
+            } while (!answer.equals("yes") && !answer.equals("no"));
         } else if (!movies.isEmpty()) {
             do {
                 System.out.println("Would you like to save the movies in the library for next time?");
@@ -547,7 +547,7 @@ public class Program {
 
                 }
             }
-            while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
+            while (!answer.equals("yes") && !answer.equals("no"));
         } else if (!books.isEmpty()) {
             do {
                 System.out.println("Would you like to save the books in the library for next time?");
@@ -576,7 +576,7 @@ public class Program {
                         break;
 
                 }
-            } while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
+            } while (!answer.equals("yes") && !answer.equals("no"));
         }
         waitingTime();
         endProgram = true;
