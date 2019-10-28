@@ -16,10 +16,6 @@ public class Page implements Serializable{
         this.amountOfPages = amountOfPages;
     }
 
-    public int getAmountOfPages() {
-        return amountOfPages;
-    }
-
     /**
      * Method to add random words from save file based on amount of pages (10 pages = 10 words).
      */
@@ -29,7 +25,7 @@ public class Page implements Serializable{
 
     @Override
     public String toString() {
-        return ", pages: " + getAmountOfPages();
+        return ", pages: " + amountOfPages;
     }
 }
 

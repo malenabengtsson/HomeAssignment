@@ -12,9 +12,6 @@ public class MovieDuration implements Serializable {
         this.movieDuration = movieDuration;
     }
 
-    public int getMovieDuration() {
-        return movieDuration;
-    }
 
     @Override
     public String toString() {
