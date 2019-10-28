@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class MovieDuration implements Serializable {
     private int movieDuration;
 
-    MovieDuration (int movieDuration){
+   public MovieDuration (int movieDuration){
         this.movieDuration = movieDuration;
     }
 

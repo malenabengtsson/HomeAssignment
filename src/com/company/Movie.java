@@ -15,13 +15,17 @@ public class Movie extends LibraryItem {
         this.movieDuration = new ArrayList<>(duration);
     }
     public void thankYouMessage(){
-        System.out.println("Thank you for visiting the movie aisle, the movie has been added.\n" +
-                "----------------------------------");
+        System.out.println("Thank you for visiting the movie aisle, the movie has been added.");
     }
 
     public String getTitle() {
         return title;
     }
+
+    /**
+     * Add duration when creating a new movie
+     * @param duration
+     */
     public void addMovieDuration (int duration){
         for (int i = 0; i <duration; i++) {
             movieDuration.add(new MovieDuration(duration));

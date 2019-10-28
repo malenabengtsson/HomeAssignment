@@ -3,11 +3,12 @@ package com.company;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
+/**
+ * Class for testing methods
+ */
 public class MenuTest {
     Program program = new Program();
 

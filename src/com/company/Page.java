@@ -20,6 +20,9 @@ public class Page implements Serializable{
         return amountOfPages;
     }
 
+    /**
+     * Method to add random words from save file based on amount of pages (10 pages = 10 words).
+     */
     public void addWordsToPage() {
         System.out.print(words.get(random.nextInt(words.size()-1)) + " ");
     }

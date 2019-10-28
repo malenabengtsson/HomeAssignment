@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-/**
- * Heres where the code is running
- */
 public class Program {
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<Book> books;
@@ -244,7 +241,9 @@ public class Program {
         }
     }
 
-
+    /**
+     * Calculate average amount of pages of all books in library
+     */
     public void averagePages() {
         if (books.isEmpty()) {
             System.out.println("No books added yet, average pages cannot be calculated.");
@@ -261,7 +260,6 @@ public class Program {
             separationLine();
         }
     }
-
 
     public void movieMenu() {
         Menu.MovieMenu menu;
@@ -354,6 +352,9 @@ public class Program {
         }
     }
 
+    /**
+     * Calculate average amount of duration of movies in library
+     */
     public void averageDuration() {
         if (movies.isEmpty()) {
             System.out.println("No movies added yet, average duration cannot be calculated.");
