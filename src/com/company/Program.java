@@ -225,11 +225,9 @@ public class Program {
                 if (books.get(i).getTitle().equalsIgnoreCase(rentBook)) {
                     System.out.println("You rented the book and its no longer available at the library.");
                     separationLine();
-                    for (int j = 0; j < books.size() - 1; j++) {
-                        books.get(i).getPages().remove(j);
-                        found = true;
-                    }
                     books.remove(i);
+                    found = true;
+
                 } else if (!(books.get(i).getTitle().equalsIgnoreCase(rentBook))) {
                     found = false;
                 }
@@ -285,7 +283,7 @@ public class Program {
                     break;
             }
 
-        } while (Menu.showMenuAndGetChoice(Menu.MovieMenu.values()) != Menu.MovieMenu.BACK_TO_MAIN_MENU);
+        } while (menu != Menu.MovieMenu.BACK_TO_MAIN_MENU & !endProgram);
     }
 
     public void addMovie() {
@@ -522,6 +520,9 @@ public class Program {
                     case "no":
                         System.out.println("We hope to see you again!");
                         break;
+                    default:
+                        System.out.println("Answer yes or no, please.");
+                        break;
                 }
             } while (!answer.equals("yes") && !answer.equals("no"));
         } else if (!movies.isEmpty()) {
@@ -575,7 +576,9 @@ public class Program {
 
                         }
                         break;
-
+                    default:
+                        System.out.println("Answer yes or no, please.");
+                        break;
                 }
             } while (!answer.equals("yes") && !answer.equals("no"));
         }
