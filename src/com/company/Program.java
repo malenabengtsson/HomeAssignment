@@ -591,6 +591,6 @@ public class Program {
     }
 
     public void separationLine() {
-        System.out.println("--------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------\n");
     }
 }
