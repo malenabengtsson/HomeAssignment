@@ -20,7 +20,7 @@ public class Program {
     private boolean foundBooks = FileUtils.checkFileExist("availableBooks.ser");
     private boolean foundMovies = FileUtils.checkFileExist("availableMovies.ser");
 
-    Program() {
+    public Program() {
         checkForSaveFile();
     }
 

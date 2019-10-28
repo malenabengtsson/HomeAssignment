@@ -36,6 +36,4 @@ public class Movie extends LibraryItem {
     public String toString() {
         return  "Title: " + getTitle();
     }
-
-
 }

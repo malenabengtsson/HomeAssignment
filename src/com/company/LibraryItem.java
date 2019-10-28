@@ -9,7 +9,7 @@ public abstract class LibraryItem implements Serializable {
     private String title;
 
 
-    LibraryItem(String title) {
+    public LibraryItem(String title) {
         this.title = title;
 
     }
