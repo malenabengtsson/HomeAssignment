@@ -216,6 +216,10 @@ public class Program {
         } else if (!canYouWriteInBooks && FileUtils.loadObjects("availableBooks.ser") != null) {
             System.out.println("The filesave for books are read only and you cant remove a book");
         } else {
+            System.out.println("The following books are available: ");
+            for (Book book : books){
+                System.out.println(book + ", pages: " + book.getPages().size());
+            }
             System.out.println("Enter the title of the book you would like to rent.");
             String rentBook = scanner.nextLine();
             boolean found = true;
@@ -332,6 +336,10 @@ public class Program {
             System.out.println("The filesave for movies are read only and you cant rent a movie.");
             separationLine();
         } else {
+            System.out.println("The following movies are available: ");
+            for (Movie movie : movies){
+                System.out.println(movie + ", duration " + movie.getMovieDuration().size());
+            }
             System.out.println("Enter the title of the movie you would like to rent.");
             String rentMovie = scanner.nextLine();
             boolean found = true;
