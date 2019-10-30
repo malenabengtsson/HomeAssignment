@@ -17,6 +17,7 @@ public class Book extends LibraryItem {
 
     /**
      * Add pages when book is created
+     *
      * @param amountOfPages
      */
     public void addPages(int amountOfPages) {
@@ -37,6 +38,7 @@ public class Book extends LibraryItem {
     public void thankYouMessage() {
         System.out.println("Thank you for visiting the book aisle, the book has been added.");
     }
+
     @Override
     public String toString() {
         return "Title: " + getTitle();

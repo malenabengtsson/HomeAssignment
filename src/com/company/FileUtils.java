@@ -13,9 +13,10 @@ import java.util.List;
 public class FileUtils {
     /**
      * Generic method for savefile
-     * @param o name of object
+     *
+     * @param o        name of object
      * @param fileName name of savefile
-     * @param option choose option
+     * @param option   choose option
      */
     public static void saveObjects(Object o, String fileName, StandardOpenOption... option) {
         Path path = Paths.get(fileName);
@@ -40,7 +41,7 @@ public class FileUtils {
     }
 
     /**
-     * Method for saving strings to a txt.file
+     * Method for saving strings to a text file
      * @param fileName name of savefile
      * @return returns true or false if save file exist
      */
@@ -80,7 +81,7 @@ public class FileUtils {
      * Method to delete a save file if user wants to
      * @param fileName name of file
      */
-    public static void deleteSaveFile (String fileName){
+    public static void deleteSaveFile(String fileName) {
         File file = new File(fileName);
         file.delete();
     }

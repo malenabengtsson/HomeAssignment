@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Seperate class for page
  */
-public class Page implements Serializable{
+public class Page implements Serializable {
     private int amountOfPages;
     private Random random = new Random();
     private List<String> words = FileUtils.readAllLines("text.txt");
@@ -20,7 +20,7 @@ public class Page implements Serializable{
      * Method to add random words from save file based on amount of pages (10 pages = 10 words).
      */
     public void addWordsToPage() {
-        System.out.print(words.get(random.nextInt(words.size()-1)) + " ");
+        System.out.print(words.get(random.nextInt(words.size() - 1)) + " ");
     }
 
     @Override
