@@ -211,7 +211,8 @@ public class Program {
 
     public void rentBook() {
         if (books.isEmpty()) {
-            System.out.println("Sorry, there are no books available at the library");
+            System.out.println("Sorry, there are no books available at the library.");
+            separationLine();
         } else if (!canYouWriteInBooks && FileUtils.loadObjects("availableBooks.ser") != null) {
             System.out.println("The filesave for books are read only and you cant remove a book");
         } else {
@@ -329,6 +330,7 @@ public class Program {
             separationLine();
         } else if (!canYouWriteInMovies && FileUtils.loadObjects("availableMovies.ser") != null) {
             System.out.println("The filesave for movies are read only and you cant rent a movie.");
+            separationLine();
         } else {
             System.out.println("Enter the title of the movie you would like to rent.");
             String rentMovie = scanner.nextLine();
@@ -586,7 +588,7 @@ public class Program {
         endProgram = true;
     }
 
-    public void waitingTime() {
+    private void waitingTime() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -594,7 +596,7 @@ public class Program {
         }
     }
 
-    public void separationLine() {
+    private void separationLine() {
         System.out.println("--------------------------------------------------------------\n");
     }
 }
